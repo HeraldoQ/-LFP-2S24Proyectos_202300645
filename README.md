@@ -1,4 +1,3 @@
-﻿![Líneas verticales multicolores maravillosas distorsionadas estilo retro de  patrones sin fisuras para imprimir en papel de regalo | Vector Premium](Aspose.Words.2860e493-b601-4440-85ea-caba0c38bba3.001.jpeg)
 # <a name="_toc175262676"></a>**INTRODUCCIÓN**
 - # <a name="_toc175262677"></a>**Objetivo**
 Proporcionar ayuda sobre el uso correcto de la aplicación por medio de instrucciones y pasos específicos que se deben seguir para poder lograr el objetivo del programa.
@@ -96,16 +95,7 @@ Este botón tomará el texto y lo mandará a su análisis en un programa de fort
 
 También se generará una pagina en html, dependiendo de los ajustes que se hagan
 
-![Interfaz de usuario gráfica
-
-Descripción generada automáticamente con confianza media](Aspose.Words.2860e493-b601-4440-85ea-caba0c38bba3.006.png)
-
-
-
-![Aplicación
-
-Descripción generada automáticamente con confianza media](Aspose.Words.2860e493-b601-4440-85ea-caba0c38bba3.007.png)
-
+![image](https://github.com/user-attachments/assets/324440fe-a46e-473e-8947-e16fec13c5d1)
 
 
 
