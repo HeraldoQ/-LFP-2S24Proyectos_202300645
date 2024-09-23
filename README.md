@@ -75,10 +75,7 @@ En este espacio se puede escribir libremente texto normal
 
 En este botón habrán diversas opciones:
 
-![Interfaz de usuario gráfica, Aplicación
-
-Descripción generada automáticamente](Aspose.Words.2860e493-b601-4440-85ea-caba0c38bba3.005.png)
-
+![image](https://github.com/user-attachments/assets/017d9e61-b901-4bff-8d6a-45a55509bb87)
 
 
 
