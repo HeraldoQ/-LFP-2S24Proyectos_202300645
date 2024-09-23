@@ -2,34 +2,36 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label" : "run",
+            "label": "todo",
             "type": "shell",
-            "command": "./Proyecto1",
-            "dependsOn":[
+            "command": "./Proyecto2.exe",
+            "dependsOn" : [
                 "build"
             ],
-            "dependsOrder": "parallel",
-            "group": { 
+            "dependsOrder": "sequence",
+            "group": {
                 "kind": "build",
-                "isDefault": true 
+                "isDefault": true
             }
+            
         },
+       
         
-        {
-            "label": "build",
-            "type": "shell",
-            "command": "gfortran",
-            "args": [
-                "-o",
-                "Proyecto1",
-                "Proyecto1.f90",
-                
 
+        {
+            "label" : "build",
+            "type" : "shell",
+            "command" : "gfortran",
+            "args" : [
+                "-o",
+                "Proyecto2.exe",
+                "analizador.f90"
             ],
 
-
-             
         }
     ]
+
+
+
 
 }
