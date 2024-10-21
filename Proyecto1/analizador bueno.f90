@@ -14,7 +14,7 @@ module funciones
     Type :: lexema
     integer :: numerol
     !si se trunca algo se hace desde aqui
-    character(len = 79) :: lexemal
+    character(len = 29) :: lexemal
     character(len=20) :: tipol
     integer :: columnal
     integer :: lineal
@@ -130,7 +130,7 @@ program analizador
     !character(len=10000) :: entrada
     character(len=1) :: char
                                         !palabra es para que lo agarre como palabra, sino lo trunca no se porque
-    character(len=50) :: tkn
+    character(len=30) :: tkn
     character(len=200) :: tknaper,palabra
 
     !para todo lo concerniente a tokens y eso
@@ -238,25 +238,25 @@ program analizador
     do while (puntero <=len)
     
     char = entrada(puntero:puntero)
-    !print *, trim(char)
+    print *, trim(char)
 
     if (ichar(char) == 10) then
         lineaa = lineaa + 1
         columnaa = 0
         puntero = puntero + 1
-        !print *, "salto de lineaz"
+        print *, "salto de lineaz"
     elseif (ichar(char) == 9) then
         columnaa = columnaa + 1
         puntero = puntero + 1
-        !print *, "tabulador"
+        print *, "tabulador"
     elseif (ichar(char) == 32 .and. (comillas .eqv. .false.)) then
         columnaa = columnaa + 1
         puntero = puntero + 1
-        !print *, "espacio"
+        print *, "espacio"
     elseif (ichar(char) == 00 .or. ichar(char) == 11) then
         columnaa = columnaa + 1
         puntero = puntero + 1
-        !print *, "caracter nulo"
+        print *, "caracter nulo"
     else
         
         select case (estado)
@@ -290,7 +290,7 @@ program analizador
             elseif (any(char == num)) then
                 tkn = trim(tkn) // char
                 columnaa = columnaa + 1
-                
+            
                 
             else
                 numErrores = numErrores + 1
@@ -714,7 +714,7 @@ program analizador
                 
                 if (any(tkn == pr)) then
                     print *, "token igual: ", tkn
-                    
+
                     numlex = numlex + 1
                     palabra = "palabra reservada"
                     listal(numlex)%numerol = numlex
@@ -911,7 +911,7 @@ program analizador
                     elseif (any(char == ayc)) then
                         
                         
-                    elseif (contadorsat <= 2) then
+                    elseif (contadorsat == 2) then
                             
                             numlex = numlex + 1
         
@@ -930,7 +930,6 @@ program analizador
                         errores(numErrores,:) = (/ ichar(char), 69, columnaa, lineaa/)
                         columnaa = columnaa + 1
                         print *, "error"
-                        tkn = ""
                     end if
 
                     if (char == "%")  then
@@ -978,23 +977,17 @@ program analizador
             else
 
             if (any(char == minus) .or. any(char == mayus) .or. any(char == num) .or. char == comi .or. char == " ".or. & 
-            char == "\" .or. char == "." .or. char == ":" .or. char == "_") then
+            char == "\" .or. char == "." .or. char == ":") then
                 if (char == " ") then
                     tkn = trim(tkn) // "-"
                     columnaa = columnaa + 1
-                elseif (char == comi .or. char == "}") then
+                elseif (char == comi) then
                     contadorc = contadorc + 1
                     columnaa = columnaa + 1
                     comillas = .true.
 
                     numlex = numlex + 1
-
-                    if (char == "}") then
-                        palabra = "cierre"
-                    else
-                        palabra = "comillas"
-                    end if
-                    
+                    palabra = "comillas"
                     listal(numlex)%numerol = numlex
                     listal(numlex)%lexemal = trim(char)
                     listal(numlex)%tipol = trim(palabra)
@@ -1018,14 +1011,10 @@ program analizador
                 end if
                 
             else
-                if (char == '}' ) then
-                    print *, "cierre"
-                else
                 numErrores = numErrores + 1
                 errores(numErrores,:) = (/ ichar(char), 69, columnaa, lineaa/)
                 columnaa = columnaa + 1
                 print *, "errorzzz"
-                end if
             end if
             
             if (contadorc == 2 .and. tkn .ne. "") then
@@ -1118,124 +1107,12 @@ program analizador
             print *, "error en caracter ", char_error, " Descripcion",errores(i,4) , &
             " en la columna ", errores(i,3), " en la linea " , errores(i,4)
         end do
-        
- 
+    end if
 
 
 
 
 
-
-
-
-
-        buffer = "C:\Cursos\Fortran\Lab_LFP\_LFP_2S24Proyectos_202300645\Proyecto1\errores.html"
-        open(unit=10, file=trim(buffer), status='replace', action='write')
-    
-        write(10,*) '<!DOCTYPE html>' // achar(10), &
-'<html lang="es">' // achar(10), &
-'<head>' // achar(10), &
-'    <meta charset="UTF-8">' // achar(10), &
-'    <meta name="viewport" content="width=device-width, initial-scale=1.0">' // achar(10), &
-'    <title>Tabla de Errores</title>' // achar(10), &
-'    <style>' // achar(10), &
-'        table {' // achar(10), &
-'            width: 100%;' // achar(10), &
-'            border-collapse: collapse;' // achar(10), &
-'        }' // achar(10), &
-'        th, td {' // achar(10), &
-'            border: 1px solid black;' // achar(10), &
-'            padding: 8px;' // achar(10), &
-'            text-align: left;' // achar(10), &
-'        }' // achar(10), &
-'        th {' // achar(10), &
-'            background-color: #f2f2f2;' // achar(10), &
-'        }' // achar(10), &
-'    </style>' // achar(10), &
-'</head>' // achar(10), &
-'<body>' // achar(10), &
-'    <h1>Tabla de Errores</h1>' // achar(10), &
-'    <table>' // achar(10), &
-'        <thead>' // achar(10), &
-'            <tr>' // achar(10), &
-'                <th>No</th>' // achar(10), &
-'                <th>Error</th>' // achar(10), &
-'                <th>Descripción</th>' // achar(10), &
-'                <th>Fila</th>' // achar(10), &
-'                <th>Columna</th>' // achar(10), &
-'            </tr>' // achar(10), &
-'        </thead>' // achar(10), &
-'        <tbody>' // achar(10)
-close(10)
-
-
-
-do i=1,numErrores
-
-    char_error = achar(errores(i,1))
-
-
-
-open(unit=10, file=trim(buffer), status='old', action='write', position='append')
-write(10,*) '            <!-- Aquí puedes agregar filas de datos -->' // achar(10), &
-'            <tr>' // achar(10), &
-'                <td>',i,'</td>' // achar(10), &
-'                <td>',char_error,'</td>' // achar(10), &
-'                <td>',errores(i,4),'</td>' // achar(10), &
-'                <td>',errores(i,4),'</td>' // achar(10), &
-'                <td>',errores(i,3),'</td>' // achar(10), &
-'            </tr>' // achar(10)
-close(10)
-end do
-
-
-
-
-
-
-
-
-open(unit=10, file=trim(buffer), status='old', action='write', position='append')
-    
-
-write(10,*)'        </tbody>' // achar(10), &
-'    </table>' // achar(10), &
-'</body>' // achar(10), &
-'</html>' // achar(10)
-
-
-
-close(10)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        do i=1,numErrores
-            char_error = achar(errores(i,1))
-            write(10,*) "error en caracter ", char_error, " Descripcion",errores(i,4) , &
-            " en la columna ", errores(i,3), " en la linea " , errores(i,4)
-        end do
-
-
-
-
-
-
-
-    else
 
 
 
@@ -1251,8 +1128,8 @@ close(10)
         " c", listal(i)%columnal, " f", listal(i)%lineal
         print *, ""
     end do
-   print *, "//////////////////////////////////////////////"
 
-end if
+
+    
 end program analizador
 

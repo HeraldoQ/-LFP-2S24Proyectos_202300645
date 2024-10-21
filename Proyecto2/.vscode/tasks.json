@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "todo",
+            "type": "shell",
+            "command": "./Proyecto2.exe",
+            "dependsOn" : [
+                "build"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+            
+        },
+       
+        
+
+        {
+            "label" : "build",
+            "type" : "shell",
+            "command" : "gfortran",
+            "args" : [
+                "-o",
+                "Proyecto2.exe",
+                "Proyecto2.f90"
+            ],
+
+        }
+    ]
+
+
+
+
+}

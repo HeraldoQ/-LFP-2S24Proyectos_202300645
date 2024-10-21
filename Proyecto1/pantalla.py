@@ -61,7 +61,7 @@ def enviar():
 
 
 #cuadro de texto de entrada
-entrada = tk.Text(ventana, height=35, width=50, wrap = "word", font=("Calibri", 12))
+entrada = tk.Text(ventana, height=35, width=70, wrap = "word", font=("Calibri", 12))
 entrada.pack(anchor = "w")
 
 
