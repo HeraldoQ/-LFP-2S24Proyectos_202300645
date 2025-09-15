@@ -1,7 +1,7 @@
 # <a name="_toc175262676"></a>**INTRODUCCIÓN**
 - # <a name="_toc175262677"></a>**Objetivo**
 Proporcionar ayuda sobre el uso correcto de la aplicación por medio de instrucciones y pasos específicos que se deben seguir para poder lograr el objetivo del programa.
-e
+ee2
 
 - # <a name="_toc175262678"></a>**Requerimientos**
 
